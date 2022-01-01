@@ -72,6 +72,7 @@ namespace Mirror.WebRTC
 			LoginID = null;
 		}
 
+		public bool connected;
 		/// <summary>
 		/// Connect to the WebSocket Signaling Server with a unique LoginID.
 		/// If LoginID is already in use on the server, the connection will be closed.
@@ -94,6 +95,7 @@ namespace Mirror.WebRTC
 
 			WebSocket.OnOpen += () =>
 			{
+				connected = true;
 				Debug.Log($"{GetType().Name}: OnOpen\n'{id}'");
 				LoginID = id;
 			};

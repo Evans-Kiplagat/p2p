@@ -21,7 +21,6 @@ namespace Mirror.WebRTC
 		private void Awake()
 		{
 			rtcTransport = GetComponent<RTCTransport>();
-
 			signalers = GetComponents<RTCSignaler>();
 			toolbarSelected = Array.IndexOf(signalers, rtcTransport.activeSignaler);
 			toolbarStrings = signalers.Select(x => " " + x.GetType().Name).ToArray();
@@ -42,8 +41,8 @@ namespace Mirror.WebRTC
 			{
 				GUILayout.Label("Join as Client via:");
 				toolbarSelected = GUILayout.SelectionGrid(toolbarSelected, toolbarStrings, 1, "toggle");
-				rtcTransport.activeSignaler = signalers[toolbarSelected];
-			}
+                rtcTransport.activeSignaler = signalers[toolbarSelected];
+            }
 			else
 			{
 				if (rtcTransport.clientConnection != null)
